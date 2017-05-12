@@ -1,0 +1,25 @@
+page-home {
+    
+    .operand-active{
+        width: 100px; 
+        background-color: green; 
+        
+    }
+    .operator-active{
+        width: 73px;     
+        background-color: green; 
+    }
+    .operator-selected{
+        width: 73px;     
+        background-color: #0000ff; 
+    }
+    .operand-dead{
+        width: 100px; 
+        background-color: #808080; 
+        
+    }
+    .container{
+        text-align: center; 
+
+    }
+}
