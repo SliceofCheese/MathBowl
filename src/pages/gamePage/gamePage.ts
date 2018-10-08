@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController , NavParams} from 'ionic-angular';
 import {Howl, Howler} from 'howler';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-gamePage',
+  templateUrl: 'gamePage.html'
 })
 
-export class HomePage {
+export class GamePage {
 
   public timeLeft: number;
   public timer: number; // I need variable that can be accessed outside of gameTime(); 
@@ -18,11 +18,13 @@ export class HomePage {
   public oscillator: any;
   public currentMusic: Howl;
   public sound: Howl; 
+  public isHard: boolean;
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, public navParams: NavParams) {
     this.gameTime();
     this.musicHandler();
     this.soundHandler(); 
+    this.isHard = navParams.get('isHard');
 
   }
 
@@ -30,7 +32,7 @@ export class HomePage {
   public reset() {
     this.gameTime();
     this.musicHandler();
-  }
+  };
 
   public soundHandler(){
     this.sound = new Howl({
@@ -47,37 +49,16 @@ export class HomePage {
 
 
   public musicHandler(status = true) {
-    // var audio = new Audio('../MathBowl/src/assets/music/NumbersMusic1.ogg');
-    // audio.play();
+    var audio = new Audio('../MathBowl/src/assets/music/NumbersMusic1.ogg');
+    audio.play();
     this.currentMusic = new Howl({
       src: ['assets/music/NumbersMusic1.ogg'],
       loop: true
     });
-   this.currentMusic.play();
-    /*
-    This isn't a bad idea, however, it's a request that must be made to a URL. You cannot reference a local file
-    it's cross domain only-- which means that it must be transferred between two_ differeing secruity domains.
-    */
-    // var request = new XMLHttpRequest();
-    // var audioContext = new AudioContext();
+  //  this.currentMusic.play();
 
-    // request.open('GET', 'Users/Sean/MathBowl/src/assets/music/NumbersMusic1.ogg', true);
-    // request.responseType = 'arraybuffer';
-
-    // request.onload = function () {
-    //   var undecodedAudio = request.response;
-
-    //   audioContext.decodeAudioData(undecodedAudio, function (buffer) {
-    //     var sourceBuffer = audioContext.createBufferSource();
-
-    //     sourceBuffer.buffer = buffer;
-    //     sourceBuffer.connect(audioContext.destination);
-    //     sourceBuffer.start(audioContext.currentTime);
-    //   });
-    // };
-
-    // request.send();
-
+   if (status == false)
+      this.currentMusic.stop(); 
   }
 
   public runOscillator() {
@@ -124,7 +105,7 @@ export class HomePage {
       case '*':
         if (this.manNum == 0) {
           let alert = this.alertCtrl.create({
-            title: 'You CANNOT DIVIDE BY ZERO!!!',
+            title: 'You CANNOT MULTIPLY BY ZERO!!!',
             buttons: ['OK']
           });
           alert.present();
@@ -134,14 +115,22 @@ export class HomePage {
         }
         break;
       case '/':
-        if (this.target % this.manNum != 0) {
+        if (this.target % this.manNum != 0 && this.manNum != 0) {
           let alert = this.alertCtrl.create({
             title: 'The number must be an integer',
             buttons: ['OK']
           });
           alert.present();
         }
-        else {
+        else if (this.manNum == 0) {
+          let alert = this.alertCtrl.create({
+            title: 'You CANNOT MULTIPLY BY ZERO!!!',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+        else 
+        {
           this.target /= this.manNum;
         }
         break;
@@ -186,6 +175,7 @@ export class HomePage {
 
   cancel() {
     this.operand = "N";
+    this.manNum = null; 
   }
   selectOp(operand: string) {
     this.operand = operand;
@@ -196,6 +186,39 @@ export class HomePage {
     // document.getElementById().style,backgroundColor =""; 
     // Since this is easy mode, we'll have this be added for a later hard mode. 
     // TODO: Add a graying out in the event that you successfully select a number and operator combination.
+    switch(this.manNum)
+    {
+      case 1: 
+      break; 
+      case 2:
+      break; 
+       
+      case 3: 
+      break; 
+
+      case 4: 
+      break; 
+
+      case 5: 
+      break; 
+
+      case 6: 
+      break; 
+
+      case 7: 
+      break; 
+
+      case 8: 
+      break; 
+
+      case 9: 
+      break; 
+
+      case 0: 
+      break; 
+
+    }
+
   }
 
   public gameOver(timeLeft?: number) {

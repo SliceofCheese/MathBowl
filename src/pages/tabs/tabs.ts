@@ -1,19 +1,45 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { StartMenuPage } from '../start-menu/start-menu';
+import { NavController, AlertController } from 'ionic-angular';
+import {Howl, Howler} from 'howler';
+
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = StartMenuPage;
+  // tab2Root = AboutPage; I don't think that 
+  // tab3Root = ContactPage;
+  public musicHandler: Howl;
 
-  constructor() {
+  constructor(private alertCtrl: AlertController) {
+  }
 
+  menuReturn()
+  {
+    let alert = this.alertCtrl.create({
+      title: 'Would you like to return back to the main menu?',
+      buttons: [
+        {
+            text: "YES",
+            role: 'BackScreen',
+            handler: () => {
+              console.log("this shouldn't do anything but close the log");
+                
+            } 
+        },
+        {
+          text: "NO",
+          role: 'BackScreen',
+          handler: () => {
+            this.musicHandler.stop(); 
+          } 
+        }
+      ]
+    });
+    alert.present(); 
   }
 }

@@ -1,10 +1,13 @@
-page-home {
+page-gamePage {
     
     .operand-active{
         width: 100px; 
         background-color: green; 
-        
     }
+    .operand-active:hover{
+        background-color: purple !important;
+    }
+
     .operator-active{
         width: 73px;     
         background-color: green; 
@@ -20,6 +23,5 @@ page-home {
     }
     .container{
         text-align: center; 
-
     }
 }

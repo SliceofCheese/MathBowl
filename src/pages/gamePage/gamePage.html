@@ -3,21 +3,18 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-<script src="/src/pages/home/home.ts"></script>
+<script src="/src/pages/gamePage/gamePage.ts"></script>
 <script>
     var music = new Howl({
       src: ['NumbersMusic1.webm', 'NumbersMusic1.ogg']
     });
 </script> 
-<ion-content padding>
   <h2>MathBowl</h2>
   <div class="container">
-    <h1> {{victoryNum}}</h1>
+    <h1> Target: {{victoryNum}}</h1>
    <h1> Time Remaining: {{timeLeft}} </h1> 
     <h1> {{target}} {{operand}} {{manNum}} </h1>
-    <div>
-      This is a bit of a test.
-    </div>
+
   </div>
     <!--TODO: Fix the length of the button. Not important now, we need functionality.-->
     
@@ -47,4 +44,3 @@
     <button class="operator-active" ion-button (click)="selectOp('*')">x</button>
     <button class="operator-active" ion-button (click)="selectOp('/')">/</button>
     </div>  
-</ion-content>
