@@ -17,6 +17,7 @@ export class StartMenuPage {
   public musicHandler: GamePage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+    
   }
 
 startGame()
@@ -34,7 +35,7 @@ startGame()
         role: 'HardMode',
         handler: () => {
         this.navCtrl.push(GamePage,{
-          ishard: true
+          isHard: true
         });
 
         }
@@ -44,7 +45,7 @@ startGame()
         role: 'NormalMode',
         handler: () => {
         this.navCtrl.push(GamePage, {
-          ishard: false
+          isHard: false
         });
         }
       }

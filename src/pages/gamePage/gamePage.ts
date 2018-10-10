@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController , NavParams} from 'ionic-angular';
-import {Howl, Howler} from 'howler';
+import {Howl} from 'howler';
+// import { ButtonActivation } from '/src/enums';
 
 @Component({
   selector: 'page-gamePage',
   templateUrl: 'gamePage.html'
 })
+
+// enum ButtonActivation{
+//   Activated = 1,
+//   Deactivated = 2
+// }
 
 export class GamePage {
 
@@ -19,20 +25,21 @@ export class GamePage {
   public currentMusic: Howl;
   public sound: Howl; 
   public isHard: boolean;
+  // public test: ButtonActivation;
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, public navParams: NavParams) {
     this.gameTime();
     this.musicHandler();
     this.soundHandler(); 
     this.isHard = navParams.get('isHard');
-
+    console.log(this.isHard);
   }
 
   // TODO: Reset all attributes
   public reset() {
     this.gameTime();
     this.musicHandler();
-  };
+  }
 
   public soundHandler(){
     this.sound = new Howl({
