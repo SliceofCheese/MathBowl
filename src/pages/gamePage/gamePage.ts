@@ -9,8 +9,8 @@ import {Howl} from 'howler';
 })
 
 // enum ButtonActivation{
-//   Activated = 1,
-//   Deactivated = 2
+//   Activated = true,
+//   Deactivated = false
 // }
 
 export class GamePage {
@@ -25,20 +25,41 @@ export class GamePage {
   public currentMusic: Howl;
   public sound: Howl; 
   public isHard: boolean;
-  // public test: ButtonActivation;
+  public buttonDisabled: boolean = false; 
+  public buttonArrayTrack: any;
+
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, public navParams: NavParams) {
     this.gameTime();
     this.musicHandler();
     this.soundHandler(); 
-    this.isHard = navParams.get('isHard');
-    console.log(this.isHard);
+    // this.isHard = navParams.get('isHard');
+    this.buttonArray(); 
   }
 
   // TODO: Reset all attributes
   public reset() {
     this.gameTime();
     this.musicHandler();
+    this.buttonArray(); 
+  }
+
+  public buttonArray(){
+    let buttonUsage : { buttonNumber: number, isDeactivated: boolean }[] = [
+      {"buttonNumber": 0, "isDeactivated": false },
+      {"buttonNumber": 1, "isDeactivated": false },
+      {"buttonNumber": 2, "isDeactivated": false },
+      {"buttonNumber": 3, "isDeactivated": false },
+      {"buttonNumber": 4, "isDeactivated": false },
+      {"buttonNumber": 5, "isDeactivated": false },
+      {"buttonNumber": 6, "isDeactivated": false },
+      {"buttonNumber": 7, "isDeactivated": false },
+      {"buttonNumber": 8, "isDeactivated": false },
+      {"buttonNumber": 9, "isDeactivated": false },
+    ];
+
+    this.buttonArrayTrack = buttonUsage; 
+    console.log(this.buttonArrayTrack);
   }
 
   public soundHandler(){
@@ -148,6 +169,9 @@ export class GamePage {
         });
         alert.present();
     }
+    // reset the numbers to default. 
+    // as well as disable the used button. 
+    this.buttonArrayTrack[this.manNum].isDeactivated = true; 
     this.manNum = null;
     this.operand = "N";
 
@@ -171,7 +195,7 @@ export class GamePage {
             text: 'Quit',
             role: 'quit',
             handler: () => {
-              console.log('Buy clicked');
+              console.log('Bye clicked');
             }
           }
         ]
