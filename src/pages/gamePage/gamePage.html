@@ -19,28 +19,28 @@
     <!--TODO: Fix the length of the button. Not important now, we need functionality.-->
     
   <div class="container">
-    <button class="operand-active" ion-button (click)=selectNum(1) [disabled]="buttonArrayTrack[1].isDeactivated">1</button>
-    <button class="operand-active" ion-button (click)=selectNum(2) [disabled]="buttonArrayTrack[2].isDeactivated">2</button>
-    <button class="operand-active" ion-button (click)=selectNum(3) [disabled]="buttonArrayTrack[3].isDeactivated">3</button>
+    <button class="operand-active" ion-button (click)=selectNum(1) [disabled]="NumberButtonArrayTrack[1].isDeactivated">1</button>
+    <button class="operand-active" ion-button (click)=selectNum(2) [disabled]="NumberButtonArrayTrack[2].isDeactivated">2</button>
+    <button class="operand-active" ion-button (click)=selectNum(3) [disabled]="NumberButtonArrayTrack[3].isDeactivated">3</button>
   </div>
   <div class="container">
-    <button class="operand-active" ion-button (click)=selectNum(4) [disabled]="buttonArrayTrack[4].isDeactivated">4</button>
-    <button class="operand-active" ion-button (click)=selectNum(5) [disabled]="buttonArrayTrack[5].isDeactivated">5</button>
-    <button class="operand-active" ion-button (click)=selectNum(6) [disabled]="buttonArrayTrack[6].isDeactivated">6</button>
+    <button class="operand-active" ion-button (click)=selectNum(4) [disabled]="NumberButtonArrayTrack[4].isDeactivated">4</button>
+    <button class="operand-active" ion-button (click)=selectNum(5) [disabled]="NumberButtonArrayTrack[5].isDeactivated">5</button>
+    <button class="operand-active" ion-button (click)=selectNum(6) [disabled]="NumberButtonArrayTrack[6].isDeactivated">6</button>
   </div>
   <div class="container">
-    <button class="operand-active" ion-button (click)=selectNum(7) [disabled]="buttonArrayTrack[7].isDeactivated">7</button>
-    <button class="operand-active" ion-button (click)=selectNum(8) [disabled]="buttonArrayTrack[8].isDeactivated">8</button>
-    <button class="operand-active" ion-button (click)=selectNum(9) [disabled]="buttonArrayTrack[9].isDeactivated">9</button>
+    <button class="operand-active" ion-button (click)=selectNum(7) [disabled]="NumberButtonArrayTrack[7].isDeactivated">7</button>
+    <button class="operand-active" ion-button (click)=selectNum(8) [disabled]="NumberButtonArrayTrack[8].isDeactivated">8</button>
+    <button class="operand-active" ion-button (click)=selectNum(9) [disabled]="NumberButtonArrayTrack[9].isDeactivated">9</button>
   </div>
     <div class="container">
     <button class="operand-active" ion-button (click)="accept()">Accept</button>
-    <button class="operand-active" ion-button (click)=selectNum(0) [disabled]="buttonArrayTrack[0].isDeactivated">0</button>
+    <button class="operand-active" ion-button (click)=selectNum(0) [disabled]="NumberButtonArrayTrack[0].isDeactivated">0</button>
     <button class="operand-active" ion-button (click)="cancel()">Cancel</button>
   </div>
     <div class="container">
-    <button class="operator-active" ion-button (click)="selectOp('+')">+</button>
-    <button class="operator-active" ion-button (click)="selectOp('-')">-</button>
-    <button class="operator-active" ion-button (click)="selectOp('*')">x</button>
-    <button class="operator-active" ion-button (click)="selectOp('/')">/</button>
+    <button class="operator-active" ion-button (click)="selectOp('+')" [disabled]="OperandButtonArrayTrack[0].isDeactivated">+</button>
+    <button class="operator-active" ion-button (click)="selectOp('-')" [disabled]="OperandButtonArrayTrack[1].isDeactivated">-</button>
+    <button class="operator-active" ion-button (click)="selectOp('*')" [disabled]="OperandButtonArrayTrack[2].isDeactivated">x</button>
+    <button class="operator-active" ion-button (click)="selectOp('/')" [disabled]="OperandButtonArrayTrack[3].isDeactivated">/</button>
     </div>  
