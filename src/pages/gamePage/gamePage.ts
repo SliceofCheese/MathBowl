@@ -68,6 +68,7 @@ export class GamePage {
 
     this.NumberButtonArrayTrack = NumberButtonUsage; 
     this.OperandButtonArrayTrack = OperandButtonUsage; 
+    this.manNum = null;
   }
 
   public soundHandler(){
@@ -122,6 +123,7 @@ export class GamePage {
   }
 
   accept() {
+    let stopAccept : boolean = false; 
     switch (this.operand) {
       case '+':
         this.target += this.manNum;
@@ -139,7 +141,7 @@ export class GamePage {
         }
         break;
       case '*':
-        if (this.manNum == 0) {
+        if (this.manNum == 0 || this.manNum === undefined || this.manNum === null) {
           let alert = this.alertCtrl.create({
             title: 'You CANNOT MULTIPLY BY ZERO!!!',
             buttons: ['OK']
@@ -164,6 +166,7 @@ export class GamePage {
             buttons: ['OK']
           });
           alert.present();
+          stopAccept = true; 
         }
         else 
         {
@@ -176,19 +179,18 @@ export class GamePage {
           buttons: ['OK']
         });
         alert.present();
-    }
+}
     // reset the numbers to default. 
     // as well as disable the used button. 
-    this.NumberButtonArrayTrack[this.manNum].isDeactivated = true; 
     // Arrays for the Operand button is a bit more complicated. 
     // We need to actually find the index here, as we can't pass in the number like beforehand. 
     // We can then deactivate it if it's necessary. This may seem convoluted, and that's largely because
     // it kind of is, but considering how we stored the objects, we have to keep the actual arrays aligned so we can return the result. 
-    if (this.operand != 'N'){
+    if (this.operand != 'N' && (this.manNum != null || this.manNum != undefined) && stopAccept == false){
       let result = this.OperandButtonArrayTrack.indexOf(this.OperandButtonArrayTrack.filter(x => x.operandButtonArrayTrack == this.operand)[0]);
       this.OperandButtonArrayTrack[result].isDeactivated = true; 
+      this.NumberButtonArrayTrack[this.manNum].isDeactivated = true; 
     }
-    
     this.manNum = null;
     this.operand = "N";
 
@@ -219,6 +221,8 @@ export class GamePage {
       });
       alert.present();
     }
+
+
   }
 
 
