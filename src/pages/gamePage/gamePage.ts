@@ -25,6 +25,7 @@ export class GamePage {
   public currentMusic: Howl;
   public sound: Howl; 
   public isHard: boolean;
+  public isPaused: boolean = false; 
   public buttonDisabled: boolean = false; 
   public NumberButtonArrayTrack: any;
   public OperandButtonArrayTrack: any;
@@ -43,6 +44,7 @@ export class GamePage {
     this.gameTime();
     this.musicHandler();
     this.buttonArray(); 
+    this.isPaused = false; 
   }
 
   public buttonArray(){
@@ -110,7 +112,11 @@ export class GamePage {
   public gameTime() {
     this.timeLeft = 60;
     this.timer = setInterval(() => { // A timer that records the time a player has remaining.
-      if (this.timeLeft != 0) {
+      if (this.isPaused == true)
+      {
+        this.timeLeft = this.timeLeft;
+      }
+      else if (this.timeLeft != 0 && this.isPaused == false)  {
         this.timeLeft -= 1;
       } else {
         clearInterval(this.timer);
@@ -215,16 +221,14 @@ export class GamePage {
             role: 'quit',
             handler: () => {
               console.log('Bye clicked');
+              this.navCtrl.pop();
             }
           }
         ]
       });
       alert.present();
     }
-
-
   }
-
 
   cancel() {
     this.operand = "N";
@@ -271,6 +275,32 @@ export class GamePage {
       break; 
 
     }
+
+  }
+
+  public pause(){
+    this.isPaused = true; 
+    let alert = this.alertCtrl.create({
+      title: 'PAUSED',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Resume',
+          role: 'Resume',
+          handler: () => {
+            this.isPaused = false; 
+          }
+        },
+        {
+          text: 'Quit',
+          role: 'quit',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
 
   }
 
