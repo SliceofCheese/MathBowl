@@ -197,6 +197,14 @@ export class GamePage {
       this.OperandButtonArrayTrack[result].isDeactivated = true; 
       this.NumberButtonArrayTrack[this.manNum].isDeactivated = true; 
     }
+
+    // We need to actually have a check that ensures that we are able to reset all of the numbers back. 
+    // We may need to check to see what all of the variables are based on some sort of manipulation of the bits themselves? 
+    // Not entirely sure here, but I'm just going to experiement and try something for a check on all of these. 
+
+
+    // let filtereNumberButtonArray
+    
     this.manNum = null;
     this.operand = "N";
 
