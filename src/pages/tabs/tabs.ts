@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
 import { StartMenuPage } from '../start-menu/start-menu';
-import { NavController, AlertController } from 'ionic-angular';
-import {Howl, Howler} from 'howler';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
