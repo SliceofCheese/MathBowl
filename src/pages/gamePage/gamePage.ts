@@ -48,6 +48,11 @@ export class GamePage {
   }
 
   public buttonArray(){
+    this.resetNumbers(); 
+    this.resetOperands();
+  }
+
+  public resetNumbers(){
     let NumberButtonUsage : { buttonNumber: number, isDeactivated: boolean }[] = [
       {"buttonNumber": 0, "isDeactivated": false },
       {"buttonNumber": 1, "isDeactivated": false },
@@ -61,16 +66,20 @@ export class GamePage {
       {"buttonNumber": 9, "isDeactivated": false },
     ];
 
+
+    this.NumberButtonArrayTrack = NumberButtonUsage; 
+    this.manNum = null;
+  }
+  public resetOperands(){
     let OperandButtonUsage : { operandButtonArrayTrack: string, isDeactivated: boolean }[] = [
       {"operandButtonArrayTrack": '+', "isDeactivated": false },
       {"operandButtonArrayTrack": '-', "isDeactivated": false },
       {"operandButtonArrayTrack": '*', "isDeactivated": false },
       {"operandButtonArrayTrack": '/', "isDeactivated": false },
     ];
-
-    this.NumberButtonArrayTrack = NumberButtonUsage; 
     this.OperandButtonArrayTrack = OperandButtonUsage; 
-    this.manNum = null;
+
+
   }
 
   public soundHandler(){
@@ -196,14 +205,25 @@ export class GamePage {
       let result = this.OperandButtonArrayTrack.indexOf(this.OperandButtonArrayTrack.filter(x => x.operandButtonArrayTrack == this.operand)[0]);
       this.OperandButtonArrayTrack[result].isDeactivated = true; 
       this.NumberButtonArrayTrack[this.manNum].isDeactivated = true; 
-    }
+
+      // I need to make a check to ensure that everything turns false if they 
+      
+      let operandCheckArray = this.OperandButtonArrayTrack.map(a => a.isDeactivated);
+      let numberCheckArray = this.NumberButtonArrayTrack.map(a => a.isDeactivated);
+
+      if (operandCheckArray.every(this.allDeactivated) == true){
+        this.resetOperands(); 
+      }
+
+      if (numberCheckArray.every(this.allDeactivated) == true)
+        this.resetNumbers(); 
 
     // We need to actually have a check that ensures that we are able to reset all of the numbers back. 
     // We may need to check to see what all of the variables are based on some sort of manipulation of the bits themselves? 
     // Not entirely sure here, but I'm just going to experiement and try something for a check on all of these. 
 
+    }
 
-    // let filtereNumberButtonArray
     
     this.manNum = null;
     this.operand = "N";
@@ -236,6 +256,10 @@ export class GamePage {
       });
       alert.present();
     }
+  }
+
+  allDeactivated(currentValue){
+    return currentValue == true; 
   }
 
   cancel() {
