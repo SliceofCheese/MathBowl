@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController , NavParams} from 'ionic-angular';
 import {Howl} from 'howler';
-// import { ButtonActivation } from '/src/enums';
 
 @Component({
   selector: 'page-gamePage',
   templateUrl: 'gamePage.html'
 })
-
-// enum ButtonActivation{
-//   Activated = true,
-//   Deactivated = false
-// }
 
 export class GamePage {
 
@@ -174,6 +168,8 @@ export class GamePage {
             buttons: ['OK']
           });
           alert.present();
+          stopAccept = true; 
+
         }
         else if (this.manNum == 0) {
           let alert = this.alertCtrl.create({
@@ -217,10 +213,6 @@ export class GamePage {
 
       if (numberCheckArray.every(this.allDeactivated) == true)
         this.resetNumbers(); 
-
-    // We need to actually have a check that ensures that we are able to reset all of the numbers back. 
-    // We may need to check to see what all of the variables are based on some sort of manipulation of the bits themselves? 
-    // Not entirely sure here, but I'm just going to experiement and try something for a check on all of these. 
 
     }
 
@@ -275,39 +267,7 @@ export class GamePage {
     // document.getElementById().style,backgroundColor =""; 
     // Since this is easy mode, we'll have this be added for a later hard mode. 
     // TODO: Add a graying out in the event that you successfully select a number and operator combination.
-    switch(this.manNum)
-    {
-      case 1: 
-      break; 
-      case 2:
-      break; 
-       
-      case 3: 
-      break; 
-
-      case 4: 
-      break; 
-
-      case 5: 
-      break; 
-
-      case 6: 
-      break; 
-
-      case 7: 
-      break; 
-
-      case 8: 
-      break; 
-
-      case 9: 
-      break; 
-
-      case 0: 
-      break; 
-
-    }
-
+    // Unneeded as of now, this can be handled by css instead of having to manually do it. 
   }
 
   public pause(){
