@@ -10,12 +10,7 @@
 </button>
 </div>
 
-<script src="/src/pages/gamePage/gamePage.ts"></script>
-<script>
-    var music = new Howl({
-      src: ['NumbersMusic1.webm', 'NumbersMusic1.ogg']
-    });
-</script> 
+
   <!-- <h2>MathBowl</h2> -->
   <div class="container">
     <h1> Target: {{victoryNum}}</h1>
@@ -51,3 +46,10 @@
     <button class="operator-active" ion-button (click)="selectOp('*')" [disabled]="OperandButtonArrayTrack[2].isDeactivated">x</button>
     <button class="operator-active" ion-button (click)="selectOp('/')" [disabled]="OperandButtonArrayTrack[3].isDeactivated">/</button>
     </div>  
+
+    <script src="/src/pages/gamePage/gamePage.ts"></script>
+<script>
+    var music = new Howl({
+      src: ['NumbersMusic1.webm', 'NumbersMusic1.ogg']
+    });
+</script> 
