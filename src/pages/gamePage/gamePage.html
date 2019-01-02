@@ -9,17 +9,14 @@
   <ion-icon name="star"></ion-icon>
 </button>
 </div>
-
-
+<div class="background">
   <!-- <h2>MathBowl</h2> -->
   <div class="container">
     <h1> Target: {{victoryNum}}</h1>
    <h1> Time Remaining: {{timeLeft}} </h1> 
     <h1> {{target}} {{operand}} {{manNum}} </h1>
-
   </div>
     <!--TODO: Fix the length of the button. Not important now, we need functionality.-->
-    
   <div class="container">
     <button class="operand-active" ion-button (click)=selectNum(1) [disabled]="NumberButtonArrayTrack[1].isDeactivated">1</button>
     <button class="operand-active" ion-button (click)=selectNum(2) [disabled]="NumberButtonArrayTrack[2].isDeactivated">2</button>
@@ -46,10 +43,11 @@
     <button class="operator-active" ion-button (click)="selectOp('*')" [disabled]="OperandButtonArrayTrack[2].isDeactivated">x</button>
     <button class="operator-active" ion-button (click)="selectOp('/')" [disabled]="OperandButtonArrayTrack[3].isDeactivated">/</button>
     </div>  
-
+  </div>
     <script src="/src/pages/gamePage/gamePage.ts"></script>
 <script>
     var music = new Howl({
       src: ['NumbersMusic1.webm', 'NumbersMusic1.ogg']
     });
 </script> 
+
