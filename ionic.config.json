@@ -1,5 +1,7 @@
 {
   "name": "MathBowls",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
